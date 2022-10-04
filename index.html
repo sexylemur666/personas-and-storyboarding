@@ -1,0 +1,504 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+html {
+	font-size: 19px;
+}
+
+html, body {
+	margin: auto;
+	background: #fefefe;
+	-webkit-font-smoothing: antialiased;
+}
+body {
+	font-family: "Vollkorn", Palatino, Times;
+	color: #333;
+	line-height: 1.4;
+	text-align: justify;
+}
+
+#write {
+	max-width: 960px;
+	margin: 0 auto;
+	margin-bottom: 2em;
+	line-height: 1.53;
+	padding-top: 40px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1100px;
+	}
+}
+
+@media print {
+	html {
+		font-size: 13px;
+	}
+}
+
+/* Typography
+-------------------------------------------------------- */
+
+#write>h1:first-child,
+h1 {
+	margin-top: 1.6em;
+	font-weight: normal;
+}
+
+h1 {
+	font-size:3em;
+}
+
+h2 {
+	margin-top:2em;
+	font-weight: normal;
+}
+
+h3 {
+	font-weight: normal;
+	font-style: italic;
+	margin-top: 3em;
+}
+
+h1, 
+h2, 
+h3{
+	text-align: center;
+}
+
+h2:after{
+	border-bottom: 1px solid #2f2f2f;
+    content: '';
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+    height: 1px;
+}
+
+h1+h2, h2+h3 {
+	margin-top: 0.83em;
+}
+
+p,
+.mathjax-block {
+	margin-top: 0;
+	-webkit-hypens: auto;
+	-moz-hypens: auto;
+	hyphens: auto;
+}
+ul {
+	list-style: square;
+	padding-left: 1.2em;
+}
+ol {
+	padding-left: 1.2em;
+}
+blockquote {
+	margin-left: 1em;
+	padding-left: 1em;
+	border-left: 1px solid #ddd;
+}
+code,
+pre {
+	font-family: "Consolas", "Menlo", "Monaco", monospace, serif;
+	font-size: .9em;
+	background: white;
+}
+.md-fences{
+	margin-left: 1em;
+	padding-left: 1em;
+	border: 1px solid #ddd;
+	padding-bottom: 8px;
+	padding-top: 6px;
+	margin-bottom: 1.5em;
+}
+
+a {
+	color: #2484c1;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a img {
+	border: none;
+}
+h1 a,
+h1 a:hover {
+	color: #333;
+	text-decoration: none;
+}
+hr {
+	color: #ddd;
+	height: 1px;
+	margin: 2em 0;
+	border-top: solid 1px #ddd;
+	border-bottom: none;
+	border-left: 0;
+	border-right: 0;
+}
+.ty-table-edit {
+	background: #ededed;
+    padding-top: 4px;
+}
+table {
+	margin-bottom: 1.333333rem
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.333333rem;
+	vertical-align: top;
+	border-top: 1px solid #ddd
+}
+table th {
+	font-weight: bold
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+
+.task-list{
+	padding:0;
+}
+
+.md-task-list-item {
+	padding-left: 1.6rem;
+}
+
+.md-task-list-item > input:before {
+	content: '\221A';
+	display: inline-block;
+	width: 1.33333333rem;
+  	height: 1.6rem;
+	vertical-align: middle;
+	text-align: center;
+	color: #ddd;
+	background-color: #fefefe;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	color: inherit;
+}
+.md-tag {
+	color: inherit;
+	font: inherit;
+}
+#write pre.md-meta-block {
+	min-height: 35px;
+	padding: 0.5em 1em;
+}
+#write pre.md-meta-block {
+	white-space: pre;
+	background: #f8f8f8;
+	border: 0px;
+	color: #999;
+	
+	width: 100vw;
+	max-width: calc(100% + 60px);
+	margin-left: -30px;
+	border-left: 30px #f8f8f8 solid;
+	border-right: 30px #f8f8f8 solid;
+
+	margin-bottom: 2em;
+	margin-top: -1.3333333333333rem;
+	padding-top: 26px;
+	padding-bottom: 10px;
+	line-height: 1.8em;
+	font-size: 0.9em;
+	font-size: 0.76em;
+	padding-left: 0;
+}
+.md-img-error.md-image>.md-meta{
+	vertical-align: bottom;
+}
+#write>h5.md-focus:before {
+	top: 2px;
+}
+
+.md-toc {
+	margin-top: 40px;
+}
+
+.md-toc-content {
+	padding-bottom: 20px;
+}
+
+.outline-expander:before {
+	color: inherit;
+	font-size: 14px;
+	top: auto;
+	content: "\f0da";
+	font-family: FontAwesome;
+}
+
+.outline-expander:hover:before,
+.outline-item-open>.outline-item>.outline-expander:before {
+  	content: "\f0d7";
+}
+
+/** source code mode */
+#typora-source {
+	font-family: Courier, monospace;
+    color: #6A6A6A;
+}
+
+.html-for-mac #typora-sidebar {
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+.cm-s-typora-default .cm-header, 
+.cm-s-typora-default .cm-property,
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+	color: #428bca;
+}
+
+.cm-s-typora-default .cm-atom, .cm-s-typora-default .cm-number {
+	color: #777777;
+}
+
+.typora-node .file-list-item-parent-loc, 
+.typora-node .file-list-item-time, 
+.typora-node .file-list-item-summary {
+	font-family: arial, sans-serif;
+}
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+    margin-top: calc(1rem - 12px);
+}
+
+.md-mathjax-midline {
+	background: #fafafa;
+}
+
+.md-fences .code-tooltip {
+	bottom: -2em !important;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+}
+
+
+</style><title>Personas &amp; Storyboarding</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='personas--storyboarding'><span>Personas &amp; Storyboarding</span></h1><p><span>In this project, I observed three users interact with the </span><em><span>Coffee Vendor</span></em><span> located on the first floor of the Rockefeller Library to gain insights about their general behavior patterns. I also conducted interviews with the users to obtain context and thought processes of individual users. Finally, I created two personas by creating a four-quadrant empathy map to reflect the overarching trends I observed among the users, and storyboarded one persona&#39;s entire user journey with the vending machine.</span></p><h2 id='🤳part-0-interface'><span>🤳Part 0: Interface</span></h2><p><img src="assets/interfaces.png" referrerpolicy="no-referrer" alt="interface and screens of the coffee vending machine"></p><p><span>The main interface of the </span><em><span>Coffee Vendor</span></em><span> is a large touch screen with an ordering software. On the right to the touch screen are slots for card swipe and cash insertion, and an NFC sensor for contactless payment. Other physical components include the cup holder and spout on the bottom of the machine. The ordering software has five main pages: (a) </span><strong><span>Welcome</span></strong><span> page, (b) </span><strong><span>Menu</span></strong><span> page where users can toggle between pages to select a drink, (c) </span><strong><span>Customization &amp; Confirm</span></strong><span> page where users customize their drink and pay to confirm order, (d) </span><strong><span>Preparation</span></strong><span> page, during which a cup is popped out and held by the cup holder, (e) </span><strong><span>Ready</span></strong><span> page with a video demonstrating how to remove the cup from the holder.</span></p><hr /><h2 id='📝-part-1-user-studies'><span>📝 Part 1: User Studies</span></h2><h3 id='tldr'><span>TL;DR</span></h3><p><span>👁‍🗨 Most users are able to quickly find the entry point (start button) of the interface.</span></p><p><span>👁‍🗨 Most users hesitate about what do to next after customizing their drink on the </span><strong><span>Customization &amp; Confirm</span></strong><span> page. Some toggle back and forth between the </span><strong><span>Menu</span></strong><span> and the </span><strong><span>Customization &amp; Confirm</span></strong><span> page.</span></p><p><span>👁‍🗨 Most users seem unprepared when the machine suddenly pops out the cup and holds it in the air.</span></p><p><span>👁‍🗨 Some users try to click on elements of the interface that are not interactive.</span></p><hr /><p><span>🎤 Most users are using the coffee vendor for the first time and aren&#39;t familiar with the entire process.</span></p><p><span>🎤 Most users aren&#39;t sure what to expect with the coffee cup, regardless of their past experience. One user who had experience with a similar machine finds it surprising that the Vendor holds the cup in the air while filling it; Another user with no experience with coffee vendors doesn&#39;t know a cup will be provided.</span></p><p><span>🎤 Some users find the logic of the checkout process to be counterintuitive; They expect a &quot;Confirm&quot; button before paying for the drink rather than the other way around.</span></p><p><span>🎤 Some users find it cumbersome to order multiple items as separate orders, wishing a shopping cart functionality could be added that allows them to order everything in one go.</span></p><p><span>🎤 Some users find the graphic illustration on the payment panel to be helpful.</span></p><h3 id='🔴-user-1-zilai'><span>🔴 </span><em><span>User 1. Zilai</span></em></h3><h4 id='🔴-observations'><span>🔴 Observations</span></h4><p><span>👁‍🗨 Zilai swiftly entered the menu page by touching the start button.</span></p><p><span>👁‍🗨 Zilai paused at the </span><strong><span>Customization &amp; Confirm</span></strong><span> page after selecting the drink he wanted.</span></p><p><span>👁‍🗨 Zilai circled around the room trying to find something.</span></p><p><span>👁‍🗨 Zilai squatted down and tried to see what&#39;s inside the spout from below.</span></p><p><span>👁‍🗨 Zilai went out to ask the librarian whether the machine would give you a cup; Went back to pay for his coffee after getting an affirmative answer.</span></p><h4 id='🔴-interview'><span>🔴 Interview</span></h4><p><em><strong><span>Q1.</span></strong></em><span> Have you used this coffee vendor (or similar machines of this type) before?</span></p><blockquote><p><span>No I&#39;ve never used it. I have used other vending machines - but those were like - they sold sodas in plastic bottles.</span></p></blockquote><p><em><strong><span>Q2.</span></strong></em><span> What do you like about the interface? Which part of your user experience made most sense to you?</span></p><blockquote><p><em><span>Emm... (long pause), I like the panel on the right with the drawn figures. It tells you clearly what to do. At first I thought the machine only accepted cash because there&#39;s a line on the screen that says &quot;Please insert correct amount&quot;. But then I saw the NFC icon on the right, so I knew I could actually use NFC.</span></em></p></blockquote><p><em><strong><span>Q3.</span></strong></em><span> What do you dislike about the interface? Which part of the user experience did you find most bothering or counter-intuitive?</span></p><blockquote><p><em><span>Well, I didn&#39;t know whether it would give me a cup. I was trying to find a cup near the machine - but it wasn&#39;t there. I&#39;ve never used this machine before so I didn&#39;t know what to expect: Does the coffee come with a cup or does it just come straight out like a regular coffee machine?</span></em></p></blockquote><h3 id='🟢-user-2-liam'><span>🟢 User 2. Liam</span></h3><h4 id='🟢-observations'><span>🟢 Observations</span></h4><p><span>👁‍🗨 Liam swiftly entered the menu page by touching the start button.</span></p><p><span>👁‍🗨 Liam went back and forth between menu pages to find what he wanted.</span></p><p><span>👁‍🗨 Liam seemed to hesitate for a short period at the </span><strong><span>Customization &amp; Confirm</span></strong><span> page, but eventually tapped his phone on the NFC icon to pay.</span></p><p><span>👁‍🗨 Liam squatted down a little to check what happened when the cup suddenly popped out during </span><strong><span>Preparation</span></strong><span>; Placed his hand below the cup to keep it from falling out of the holder.</span></p><h4 id='🟢-interview'><span>🟢 Interview</span></h4><p><em><strong><span>Q1.</span></strong></em><span> Have you used this coffee vendor (or similar machines of this type) before?</span></p><blockquote><p><em><span>I used a similar type of drink vending machine back in Taiwan, but I haven&#39;t used this particular machine before.</span></em></p></blockquote><p><em><strong><span>Q1. (Optional follow-up).</span></strong></em><span> What are the noticeable differences in your user experience with this machine vs. the ones you used before?</span></p><blockquote><p><em><span>The ones I used back then didn&#39;t support credit cards, so that was new to me. Also this one really surprised  me when it just held the cup in the air. In Taiwan those machines actually placed the cup on a platform before they put drink in it, and there were windows shielding everything so the drink won&#39;t spill.</span></em></p></blockquote><p><em><strong><span>Q2.</span></strong></em><span> What do you like about the interface? Which part of your user experience made most sense to you?</span></p><blockquote><p><em><span>I like the layout of the menu page. I&#39;d much rather turn pages by clicking buttons rather than scrolling an incredibly long list. That&#39;s much more intuitive to me. Also the instructions of page turning are noticeable and easy to understand. It clearly says &quot;More Drinks&quot;, &quot;Previous Page&quot; and such.</span></em></p></blockquote><p><em><strong><span>Q3.</span></strong></em><span> What do you dislike about the interface? Which part of the user experience did you find most bothering or counter-intuitive?</span></p><blockquote><p><em><span>When it just popped out a cup and held it in the air. I would expect the cup to be placed on the platform below - And, when I tried to remove the cup, although the screen showed you how to do it, the holder was so tight and the cup was so full I suspected I did something wrong there. I hoped it could maybe be a little looser, or had some motion sensor that let it grasp a little looser when you tried to remove it.</span></em></p></blockquote><h3 id='🟣-user-3--mark'><span>🟣 User 3.  Mark</span></h3><h4 id='🟣-observations'><span>🟣 Observations</span></h4><p><span>👁‍🗨 Mark swiftly entered the menu page by touching the start button.</span></p><p><span>👁‍🗨 Mark quickly selected one cup of drink and paused after he finished customization; Went back to the menu page, and selected the same drink again.</span></p><p><span>👁‍🗨 Mark looked confused and tried clicking on the &quot;Price $X.XX&quot; text at the bottom of the </span><strong><span>Customization &amp; Confirm</span></strong><span> page to no avail.</span></p><p><span>👁‍🗨 Mark payed for the drink he selected, removed it when it&#39;s done, then went back to order a different drink. This time with no noticeable hesitation.</span></p><h4 id='🟣-interview'><span>🟣 Interview</span></h4><p><em><strong><span>Q1.</span></strong></em><span> Have you used this coffee vendor (or similar machines of this type) before?</span></p><blockquote><p><em><span>No, I haven&#39;t. But I have bought coffee on similar machines before.</span></em></p></blockquote><p><em><strong><span>Q1. (Optional follow-up).</span></strong></em><span> What are the noticeable differences in your user experience with this machine vs. the ones you used before?</span></p><blockquote><p><em><span>I used to order on a platform that keeps track of what you added to your shopping cart. So I could add multiple items in the cart and customized them freely. This one didn&#39;t seem to have any concept of a shopping cart. I tried to order a drink for my friend in addition to mine. But I guessed you just had to order twice on this.</span></em></p></blockquote><p><em><strong><span>Q2.</span></strong></em><span> What do you like about the interface? Which part of your user experience made most sense to you?</span></p><blockquote><p><em><span>The whole aesthetics of the interface is pretty nice, like, the design is pretty modern in my opinion.</span></em></p></blockquote><p><em><strong><span>Q3.</span></strong></em><span> What do you dislike about the interface? Which part of the user experience did you find most bothering or counter-intuitive?</span></p><blockquote><p><em><span>I guess I was a bit confused after the customization part cause I expected it to have a &quot;add to cart&quot; button or something like that. I went back to the menu to see if my drink&#39;s been added to a cart but couldn&#39;t find anything. Another thing I found pretty counterintuitive was that the &quot;Make This Drink&quot; button only appeared after you payed for the drink. I mean, to me the button is so much easier to understand cause it tells you how to proceed. Why not just show the button first and then ask the user to pay for the drink?</span></em></p></blockquote><hr /><h2 id='🎭part-3-personas'><span>🎭Part 3: Personas </span></h2><h3 id='persona-1-joy'><span>Persona 1. Joy</span></h3><p><span>Joy has lots of friends and is very nice to them. She always likes to buy another cup for her friends when she orders her coffee with Starbucks Pickup. Today she&#39;s rushing to meet one of them so she decides to buy two cups of coffee at the </span><em><span>Coffee Vendor</span></em><span>. Joy represents the user group who have previous experience of ordering coffee through a digital platform but have not used coffee vendors before.</span></p><p><img src="assets/persona_joy.png" referrerpolicy="no-referrer" alt="persona_joy"></p><h3 id='persona-2-frank'><span>Persona 2. Frank</span></h3><p><span>Frank is a coffee lover who makes himself coffee with his coffee machine daily. Today he feels a bit too lazy for that and decides to go to the </span><em><span>Coffee Vendor</span></em><span> instead. He hasn&#39;t used this type of device before but he thinks it won&#39;t be that much different from the coffee machine he uses everyday. Frank represents the user group who regularly make coffee themselves and are more used to interacting with a regular coffee machine.</span></p><p><img src="assets/persona_frank.png" referrerpolicy="no-referrer" alt="persona_frank"></p><hr /><h2 id='🎬-part-4-storyboarding'><span>🎬 Part 4: Storyboarding</span></h2><p><img src="assets/storyboard.png" referrerpolicy="no-referrer" alt="storyboard"></p></div></div>
+</body>
+</html>
